@@ -1,4 +1,4 @@
-let data = {
+const data = {
   "Рыбы": {
     "Форель": {},
     "Щука": {}
@@ -16,22 +16,22 @@ let data = {
   }
 };
 
-let list = document.getElementById('list');
-let elem = '';
+const container = document.getElementById('list');
 
-function createList(obj) {
-  elem += '<ul>';
-  if (Object.keys(obj).length > 0) {
+function createList(obj, container) {
+  const list = document.createElement('ul');
+
+  if (Object.keys(obj).length) {
     for (const key in obj) {
-      elem += '<li>' + key;
-      if (Object.keys(obj[key]).length > 0) {
-        createList(obj[key]);
+      let listItem = document.createElement('li')
+      listItem.innerText = key;
+      list.append(listItem);
+      if (Object.keys(obj[key])) {
+        createList(obj[key], listItem);
       }
-      elem += '</li>';
     }
   }
-  elem += '</ul>';
-  return list.innerHTML = elem;
+  return container.append(list);
 }
 
-createList(data);
+createList(data, container);
