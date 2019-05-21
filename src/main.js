@@ -23,7 +23,7 @@ function createList(obj, container) {
 
   if (Object.keys(obj).length) {
     for (const key in obj) {
-      let listItem = document.createElement('li')
+      let listItem = document.createElement('li');
       listItem.innerText = key;
       list.append(listItem);
       if (Object.keys(obj[key])) {
